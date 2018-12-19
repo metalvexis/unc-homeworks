@@ -90,8 +90,6 @@ void showDataMembers( Fraction fraction ) {
 }
 
 void testMethods( Fraction fraction ){
-    int textColumn1 = 12;
-    int textColumn2 = 12;
 
     cout << fixed << setprecision(3);
     cout << boolalpha; // booleans to text
