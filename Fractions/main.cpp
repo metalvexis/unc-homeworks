@@ -10,13 +10,13 @@ using namespace std;
 
 void testInputMixed(int, int, int);     // test mixed fractions input
 void testInput(int, int);               // test proper/improper fractions input
-void testAdd( Fraction, Fraction);     // test plus method
-void testMultiply(Fraction, Fraction);// test multipliedBy method
-void testLessThan(Fraction, Fraction); // test isLessThan
+void testAdd( Fraction, Fraction);      // test plus method
+void testMultiply(Fraction, Fraction);  // test multipliedBy method
+void testLessThan(Fraction, Fraction);  // test isLessThan
 void testGreaterThan(Fraction, Fraction); // test isGreaterThan
-void testFraction(Fraction);          // test Fraction object's data member and methods
-void showDataMembers(Fraction);       // display data members of Fraction param
-void testMethods(Fraction);           // test all member methods of Fraction param
+void testFraction(Fraction);            // test Fraction object's data member and methods
+void showDataMembers(Fraction);         // display data members of Fraction param
+void testMethods(Fraction);             // test all member methods of Fraction param
 
 int main()
 {
@@ -26,14 +26,8 @@ int main()
 
     Fraction testFraction1(1,2);
     Fraction testFraction2(3,4);
-    
     Fraction testFraction3(0,1,2);
     Fraction testFraction4(1,1,2);
-    Fraction testFraction5(2,1,2);
-    
-    Fraction testFraction6(0,3,2);
-    Fraction testFraction7(1,3,2);
-    Fraction testFraction8(2,3,2);
 
     testAdd( testFraction1, testFraction2 );
     testAdd( testFraction3, testFraction4 );
@@ -46,8 +40,6 @@ int main()
     
     testGreaterThan( testFraction1, testFraction2 );
     testGreaterThan( testFraction3, testFraction4 );
-
-    
 
     return 0;
 }
@@ -72,11 +64,6 @@ void testAdd( Fraction fraction1, Fraction fraction2 ){
         fraction1.toString().c_str(),
         fraction2.toString().c_str(),
         sum.toString().c_str() );
-        
-//    cout << fraction1.toString() << " + " << fraction2.toString() << " = " << sum.toString() << endl;
-
-//    showDataMembers(sum);
-//    testMethods(sum);
 }
 
 void testMultiply( Fraction fraction1, Fraction fraction2 ){
@@ -87,11 +74,6 @@ void testMultiply( Fraction fraction1, Fraction fraction2 ){
         fraction1.toString().c_str(),
         fraction2.toString().c_str(),
         product.toString().c_str() );
-
-//    cout << fraction1.toString() << " x " << fraction2.toString() << " = " << product.toString() << endl;
-
-//    showDataMembers(product);
-//    testMethods(product);
 }
 
 void testLessThan( Fraction fraction1, Fraction fraction2 ){
