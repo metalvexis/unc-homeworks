@@ -10,30 +10,32 @@ using namespace std;
 
 void testInputMixed(int, int, int);     // test mixed fractions input
 void testInput(int, int);               // test proper/improper fractions input
-void testAdd( Fraction, Fraction );     // test plus method
-void testMultiply( Fraction, Fraction );// test multipliedBy method
-void testCompare( Fraction, Fraction ); // test isLessTah
-void testFraction( Fraction );          // test Fraction object's data member and methods
-void showDataMembers( Fraction );       // display data members of Fraction param
-void testMethods( Fraction );           // test all member methods of Fraction param
+void testAdd( Fraction, Fraction);     // test plus method
+void testMultiply(Fraction, Fraction);// test multipliedBy method
+void testCompare(Fraction, Fraction); // test isLessTah
+void testFraction(Fraction);          // test Fraction object's data member and methods
+void showDataMembers(Fraction);       // display data members of Fraction param
+void testMethods(Fraction);           // test all member methods of Fraction param
 
 int main()
 {
-    testInput( 24 , 86 );
+    testInput( 1, 2 );
 
-    testInputMixed( 3, 6, 66 );
+    testInputMixed( 0, 1, 2);
+    
+    testInputMixed( 1, 1, 2 );
 
-    testAdd( Fraction(1,3,5), Fraction(2,2,25) );
+//    testAdd( Fraction(1,3,5), Fraction(2,2) );
 
-    testAdd( Fraction(5,3,6), Fraction(7,3,66) );
+//    testAdd( Fraction(1,2), Fraction(1,2) );
 
-    testMultiply( Fraction(2,3), Fraction(3,4) );
+//    testMultiply( Fraction(2,3), Fraction(3,4) );
 
-    testMultiply( Fraction(18,90), Fraction(6,36) );
+//    testMultiply( Fraction(18,90), Fraction(6,36) );
 
-    testCompare( Fraction(1,3,5), Fraction(2,2,25) );
+//    testCompare( Fraction(1,3,5), Fraction(2,2,25) );
 
-    testCompare( Fraction(18,90), Fraction(6,36) );
+//    testCompare( Fraction(18,90), Fraction(6,36) );
 
     return 0;
 }
@@ -93,17 +95,27 @@ void testMethods( Fraction fraction ){
 
     cout << fixed << setprecision(3);
     cout << boolalpha; // booleans to text
-    printf("%+12s %-12s \n","isProper ", fraction.isProper()?"true":"false");
-    printf("%+12s %-12s \n","isValid ", fraction.isValid()?"true":"false");
-    printf("%+12s %-12.4f \n","toDecimal ", fraction.toDecimal() );
-    printf("%+12s %-12s \n","toString ", fraction.toString().c_str() );
-
-    if(fraction.getWhole()>0){
-        printf("%+12s %-12s \n","simplify ", fraction.simplify().toString().c_str() );
-    }else{
-        printf("%+12s %-12s \n","reduce ", fraction.reduce().toString().c_str() );
-    }
-    printf("%+12s %-12s \n","convert ", fraction.convert().toString().c_str() );
+    
+    printf("%12s %-12s \n","isProper ", 
+        fraction.isProper()?"true":"false");
+    
+    printf("%12s %-12s \n","isValid ", 
+        fraction.isValid()?"true":"false");
+        
+    printf("%12s %-12.4f \n","toDecimal ", 
+        fraction.toDecimal() );
+        
+    printf("%12s %-12s \n","toString ", 
+        fraction.toString().c_str() );
+        
+    printf("%12s %-12s \n","simplify ", 
+        fraction.simplify().toString().c_str() );
+        
+    printf("%12s %-12s \n","reduce ", 
+        fraction.reduce().toString().c_str() );
+        
+    printf("%12s %-12s \n","convert ", 
+        fraction.convert().toString().c_str() );
 
     cout << endl;
 }

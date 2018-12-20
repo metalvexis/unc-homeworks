@@ -10,7 +10,8 @@ class Fraction
         Fraction(int, int); // numerator, denominator
         Fraction( int, int, int); // whole number, numerator, denominator
 
-        void setFraction(int num, int den);
+        void setFraction(int, int, int);
+        void setFraction(int, int);
 
         int getWhole() { return whole; }
         int getNumerator() { return numerator; }
@@ -25,16 +26,17 @@ class Fraction
 
         bool isValid();
         bool isProper();
-
+        bool isMixed();
+        
         Fraction& reduce();
         Fraction& simplify();
         Fraction& convert();
 
         Fraction plus( const Fraction );
         Fraction multipliedBy( const Fraction );
+        
         bool isLessThan( const Fraction );
-
-
+        bool isGreaterThan( const Fraction );
     protected:
 
     private:
@@ -42,6 +44,7 @@ class Fraction
         int numerator;
         int denominator;
         static int getGCD(int, int);
+        static int getLCM(int, int);
 };
 
 #endif // FRACTION_H
