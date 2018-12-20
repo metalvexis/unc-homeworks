@@ -45,15 +45,14 @@ void Fraction::setDenominator(int val){
 }
 
 double Fraction::toDecimal(){
-    double decimal = 0;
-
-    decimal = whole;
-
-    if(isValid()){
-        decimal += (double)numerator / (double)denominator;
+    if(!isValid()){
+        // short-circuit when invalid
+        return 0;
     }
-
-    return decimal;
+    
+    double decimal = whole;
+    decimal += (double)numerator / (double)denominator;
+    return decimal;   
 }
 
 bool Fraction::isValid(){
@@ -70,16 +69,31 @@ bool Fraction::isMixed(){
 }
 
 std::string Fraction::toString(){
-    std::string strFraction = std::to_string(numerator) + "/" +
-                            std::to_string(denominator);
-
+    if( !isValid() ){
+        // short-circuit when invalid
+        return "undefined";
+    }
+    
+    std::string strFraction = "0";
+    
+    if( numerator > 0 ){
+        strFraction = std::to_string(numerator) + "/" +
+                    std::to_string(denominator);
+    }
+    
     if( isMixed() ){
         strFraction = std::to_string(whole) + " " + strFraction;
     }
+    
     return strFraction;
 }
 
 Fraction& Fraction::reduce(){
+    if( !isValid() ){
+        // short-circuit when invalid
+        return *this;
+    }
+    
     for (int i = denominator * numerator; i > 1; i--) {
         if ((denominator % i == 0) && (numerator % i == 0)) {
             denominator /= i;
@@ -90,6 +104,11 @@ Fraction& Fraction::reduce(){
 }
 
 Fraction& Fraction::simplify(){
+    if( !isValid() ){
+        // short-circuit when invalid
+        return *this;
+    }
+    
     int gcd = Fraction::getGCD(numerator, denominator);
 
     denominator /= gcd;
@@ -100,6 +119,11 @@ Fraction& Fraction::simplify(){
 
 
 Fraction& Fraction::convert(){
+    if( !isValid() ){
+        // short-circuit when invalid
+        return *this;
+    }
+    
     if( isMixed() ){
         numerator += (whole * denominator);
         whole = 0;
@@ -132,19 +156,11 @@ Fraction Fraction::plus( Fraction fraction ){
     if( addendFraction2.isMixed() ){
         addendFraction2.convert();
     }
-
     
     int addendNum1 = ( addendFraction1.getNumerator() * (lcm / addendFraction1.getDenominator()) );
     int addendNum2 = ( addendFraction2.getNumerator() * (lcm / addendFraction2.getDenominator()) );
     
-//    int sumWhole = addendFraction1.getWhole() + addendFraction2.getWhole();
     int sumNum =  addendNum1 + addendNum2;
-                
-
-//    if(lcm<sumNum){
-//        sumWhole += sumNum / lcm;
-//        sumNum = sumNum%lcm;
-//    }
 
     Fraction newFraction(sumNum, lcm);
     
@@ -159,7 +175,7 @@ Fraction Fraction::multipliedBy( Fraction fraction ){
     if( fraction1.isMixed() ){
         fraction1.convert();
     }
-    if( fraction1.isMixed() ){
+    if( fraction2.isMixed() ){
         fraction2.convert();
     }
 
