@@ -11,8 +11,7 @@ class Fraction
         int whole;
         int numerator;
         int denominator;
-        static int getGCD(int, int);
-        static int getLCM(int, int);
+        
     public:
         Fraction(int, int); // numerator, denominator
         Fraction( int, int, int); // whole number, numerator, denominator
