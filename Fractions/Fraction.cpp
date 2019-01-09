@@ -5,11 +5,15 @@
 using namespace std;
 
 Fraction::Fraction(int whole, int num, int den){
-    setFraction( whole, num, den );
+    this->whole = whole;
+    this->numerator = num;
+    this->denominator = den;
 }
 
 Fraction::Fraction(int num, int den){
-    setFraction( 0, num, den );
+    this->whole = 0;
+    this->numerator = num;
+    this->denominator = den;
 }
 
 void Fraction::testPassByRef( Fraction& fraction ) {
