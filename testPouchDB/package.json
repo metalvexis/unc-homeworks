@@ -1,0 +1,27 @@
+{
+  "name": "testpouchdb",
+  "version": "1.0.0",
+  "description": "trying out pouchdb in local nodejs instance",
+  "main": "index.js",
+  "dependencies": {
+    "pouchdb": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "keywords": [
+    "pouchdb",
+    "couchdb",
+    "nodejs",
+    "babel",
+    "express"
+  ],
+  "author": "metvexis",
+  "license": "ISC"
+}
