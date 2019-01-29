@@ -1,0 +1,11 @@
+[Thu, 03 Jan 2019 12:25:21 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/ 304
+[Thu, 03 Jan 2019 12:25:21 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/css/styles-a9623008fc27e79da2388441deeacfab.css 304
+[Thu, 03 Jan 2019 12:25:21 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/js/bundle-34997e32896293a1fa5d71f79eb1b4f7.js 304
+[Thu, 03 Jan 2019 12:25:22 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/img/pouchdb-site.png 304
+[Thu, 03 Jan 2019 12:25:22 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/fonts/fauxtonicon5.woff 304
+[Thu, 03 Jan 2019 12:25:27 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/img/pouchdb-minilogo.png 304
+[Thu, 03 Jan 2019 13:11:04 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/ 304
+[Thu, 03 Jan 2019 13:11:04 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/css/styles-a9623008fc27e79da2388441deeacfab.css 304
+[Thu, 03 Jan 2019 13:11:04 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/js/bundle-34997e32896293a1fa5d71f79eb1b4f7.js 200
+[Thu, 03 Jan 2019 13:11:05 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/img/pouchdb-site.png 304
+[Thu, 03 Jan 2019 13:11:05 GMT] [info] [<0.000.0>] ::1 - - GET /_utils/dashboard.assets/fonts/fauxtonicon5.woff 304

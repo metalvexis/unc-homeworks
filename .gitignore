@@ -1,3 +1,7 @@
 local_config/
 .codelite/
 testPouchDB/node_modules/
+testPouchDB/localdb/
+testPouchDB/lib/
+testPouchDB/pouch/
+

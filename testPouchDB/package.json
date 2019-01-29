@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "description": "trying out pouchdb in local nodejs instance",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib",
+    "start": "node ./lib",
+    "dev": "nodemon --watch ./src --exec \"npm run build && npm start\""
+  },
   "dependencies": {
+    "express": "^4.16.4",
+    "express-pouchdb": "^4.1.0",
     "pouchdb": "^7.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "@babel/preset-env": "^7.2.3",
+    "eslint": "^5.11.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   },
   "keywords": [
     "pouchdb",
