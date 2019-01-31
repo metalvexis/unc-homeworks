@@ -16,13 +16,13 @@ class FCFS
   private:
     
     std::vector<_process> _processes;
+    
     std::vector<int> _totalProcessTimes;
     
     static bool _compareArrivalTime( _process, _process );
+    
   public:
     FCFS();
-    
-    ~FCFS();
     
     void addProcess( int, int );
     

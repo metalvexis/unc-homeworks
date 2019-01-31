@@ -14,20 +14,40 @@ Output a table with columns and rows for each input pairs:
 */
 
 #include <stdio.h>
-
+#include <iostream>
 #include "FCFS.h"
+#include <locale>  
 
 using namespace std;
 
 int main()
 {
   FCFS simulator = FCFS();
-  
-  simulator.addProcess(3,5);
-  simulator.addProcess(2,8);
-  simulator.addProcess(1,7);
+  char confirmInput = 'n';
+  int pid = 0;
+  while( confirmInput != 'y' ){
+    int arrivalTime, processingTime;
+    
+    cout << "PID: " << pid << endl;    
+        
+    cout << "Input Arrival Time > ";    
+    cin >> arrivalTime;
+    
+    cout << "Input Processing Time > ";
+    cin >> processingTime;
+    
+    simulator.addProcess(arrivalTime, processingTime);
+    pid++;
+    cout << "Start Simulation ? (y/n) > ";
+    cin >> confirmInput;
+    
+    confirmInput = std::tolower(confirmInput);
+    
+    cout << endl << endl;
+  }
   
   simulator.showTable();
+  
   return 0;
 }
 
