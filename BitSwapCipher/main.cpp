@@ -1,22 +1,26 @@
 #include <iostream>
 #include <cmath>
-
+#include <string>
+#include "BitSwapCipher.h";
 using namespace std;
 
 void binaryCountDown( int, bool*, int, int );
+void getBinaryString( int, std::string&, int );
 bool * toBinary( int );
 
-void swapBit( int, int, bool* )
+void swapBit( int, int, bool* );
 
 int main(int argc, char **argv)
 {
   try{
-    bool * arrBool = toBinary(10);
+//    getBinaryString(10, binString,16);
+//    cout << "binString: " << binString;
     
-    for( int _i=0; _i<5; _i++){
-      cout << *(arrBool+_i) << " ";
-    }
-
+    BitSwapCipher bitswap;
+    std::string binString = bitswap.toBinary(9);
+    int decimalVal = bitswap.toDecimal(binString);
+    cout << "bitString: " << binString << endl;
+    cout << "decimalVal: " << decimalVal << endl;
     
   }catch( const char * err ){
     cout << err;
@@ -25,7 +29,10 @@ int main(int argc, char **argv)
 	return 0;
 }
 
+
+
 void binaryCountDown( int decimalVal, bool* bits, int bitOffset, int recursionVal ){  
+  
   if( recursionVal%2 != 0 && recursionVal > 1 ) throw "Odd integer"; // guard for odd #s
   
   if( recursionVal <= decimalVal ) {
