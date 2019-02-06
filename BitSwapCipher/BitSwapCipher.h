@@ -10,16 +10,23 @@ private:
   // encryption key pairs
   std::pair<int, int> _keys;
 
-public:  
+
   // accepts an integer and returns the binary string equivalent.
   std::string toBinary(int);
   
   // accepts a binary string and returns the equivalent decimal value
   int toDecimal(std::string);
-
-  BitSwapCipher(){ _keys.first = 1; _keys.second = 1; };
   
-  BitSwapCipher(int k1, int k2){ _keys.first = k1; _keys.second = k2; };
+  void bitSwap(std::string&);
+
+  char charSwap(char);
+  
+public:  
+  BitSwapCipher(){ _keys.first = 0; _keys.second = 0; };
+  
+  BitSwapCipher(int k1, int k2){ setEncryptionKey(k1,k2); };
+  
+  void setEncryptionKey(int k1, int k2){ _keys.first = k1-1; _keys.second = k2-1; };
   
   //~BitSwapCipher();
   

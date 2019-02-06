@@ -13,14 +13,30 @@ void swapBit( int, int, bool* );
 int main(int argc, char **argv)
 {
   try{
-//    getBinaryString(10, binString,16);
-//    cout << "binString: " << binString;
-    
     BitSwapCipher bitswap;
-    std::string binString = bitswap.toBinary(9);
-    int decimalVal = bitswap.toDecimal(binString);
-    cout << "bitString: " << binString << endl;
-    cout << "decimalVal: " << decimalVal << endl;
+    
+    bitswap.setEncryptionKey(2,5);
+    
+    char * testStr1 = "DOG";
+    char * testStr2 = "PROGRAM";
+    
+    std::string swapped1 = bitswap.encryptedText(testStr1);
+    std::string swapped2 = bitswap.encryptedText(testStr2);
+    
+    cout << testStr1 << " ==> " << swapped1;
+    cout << endl;
+    cout << testStr2 << " ==> " << swapped2;
+    
+    cout << endl;
+    cout << endl;
+    
+    std::string reSwapped1 = bitswap.decryptedText(swapped1);
+    std::string reSwapped2 = bitswap.decryptedText(swapped2);
+    
+    cout << swapped1 << " ==> " << reSwapped1;
+    cout << endl;
+    cout << swapped2 << " ==> " << reSwapped2;
+    
     
   }catch( const char * err ){
     cout << err;

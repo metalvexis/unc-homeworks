@@ -34,3 +34,50 @@ int BitSwapCipher::toDecimal(std::string binString){
   }
   return decimalVal;
 }
+
+std::string BitSwapCipher::encryptedText(char * plaintxt){
+
+  std::string ciphertxt = "";
+
+  while(*plaintxt){
+    ciphertxt.push_back( charSwap(*plaintxt) );
+    
+    plaintxt++;
+  }
+  
+  return ciphertxt;
+}
+
+std::string BitSwapCipher::decryptedText(std::string ciphertxt){
+  const char * plaintxt = ciphertxt.c_str();
+
+  return encryptedText( const_cast<char*>(plaintxt));
+}
+
+void BitSwapCipher::bitSwap(std::string& binString){
+  char tmpChar = binString.at(_keys.first);
+  binString.at(_keys.first) = binString.at(_keys.second);
+  binString.at(_keys.second) = tmpChar;
+}
+
+char BitSwapCipher::charSwap(char plainChar){
+    int asciiValue = int(plainChar) - 65; // offset ascii values to use values 0-25
+    std::string binString = toBinary(asciiValue);
+    int decimalValue = 0;
+    
+//    cout << "PRE-SWAP " << binString << " == " << *plaintxt << "|" << decimalValue << endl; 
+
+    bitSwap(binString);
+    
+    decimalValue = toDecimal(binString);
+    
+    if( decimalValue > 25 ){
+      decimalValue = asciiValue;
+    }
+    
+    char newChar = char(decimalValue + 65); // reverse offset to use ascii value
+
+//    cout << "POST-SWAP " << binString << " == " << newChar << "|" << decimalValue << endl << endl;   
+
+    return newChar;
+}
