@@ -4,75 +4,55 @@
 #include "BitSwapCipher.h";
 using namespace std;
 
-void binaryCountDown( int, bool*, int, int );
-void getBinaryString( int, std::string&, int );
-bool * toBinary( int );
-
-void swapBit( int, int, bool* );
+void testCipher(int k1, int k2, char * ptxt);
 
 int main(int argc, char **argv)
 {
-  try{
-    BitSwapCipher bitswap;
-    
-    bitswap.setEncryptionKey(2,5);
-    
-    char * testStr1 = "DOG";
-    char * testStr2 = "PROGRAM";
-    
-    std::string swapped1 = bitswap.encryptedText(testStr1);
-    std::string swapped2 = bitswap.encryptedText(testStr2);
-    
-    cout << testStr1 << " ==> " << swapped1;
-    cout << endl;
-    cout << testStr2 << " ==> " << swapped2;
-    
-    cout << endl;
-    cout << endl;
-    
-    std::string reSwapped1 = bitswap.decryptedText(swapped1);
-    std::string reSwapped2 = bitswap.decryptedText(swapped2);
-    
-    cout << swapped1 << " ==> " << reSwapped1;
-    cout << endl;
-    cout << swapped2 << " ==> " << reSwapped2;
-    
-    
-  }catch( const char * err ){
-    cout << err;
-  }
+  // test declared variable as parameter
+  char * testStr = "DOG";
+  testCipher(2, 5, testStr);
+  
+  // test declared inline value
+  testCipher(2, 5, "PROGRAM");
+  
+  // test blank
+  testCipher(2, 5, "");
+  
+  // test space
+  testCipher(2, 5, " ");
+  
+  // test invalid keys
+  testCipher(6, -1, "INVALID KEYS");
+  
+  // test spaces in between
+  testCipher(1, 2, "JAMES PAULO");
+  
+  // test other keys
+  testCipher(3, 4, "JAMES PAULO");
+  
+  // test same key pairs but swapped
+  testCipher(3, 5, "JAMES PAULO");
+  testCipher(5, 3, "JAMES PAULO");
   
 	return 0;
 }
 
-
-
-void binaryCountDown( int decimalVal, bool* bits, int bitOffset, int recursionVal ){  
+void testCipher(int k1, int k2, char * ptxt){
+  cout << "EncryptKeys: "<< k1 << " , " << k2 << endl;
   
-  if( recursionVal%2 != 0 && recursionVal > 1 ) throw "Odd integer"; // guard for odd #s
+  BitSwapCipher bitswap;
+    
+  bitswap.setEncryptionKey(k1, k2);
   
-  if( recursionVal <= decimalVal ) {
-    decimalVal -= recursionVal;
-    bits[bitOffset] = 1;
-  }
   
-  bitOffset += 1;
-  recursionVal /= 2;
+  std::string swapped1 = bitswap.encryptedText(ptxt);
   
-  if( recursionVal>=1 ){
-    binaryCountDown( decimalVal, bits, bitOffset, recursionVal );
-  }
-}
-
-bool * toBinary( int decimalVal ){
-  static bool bits []  = { 0, 0, 0, 0, 0 };
+  cout << "ENCRYPT: " << ptxt << " => " << swapped1;
   
-  binaryCountDown( decimalVal, bits, 0, 16 );
+  cout << endl;
   
-  return bits;
-}
-
-void swapBit(int p1, int p2, bool * bits){
-  bool * tmp = bits+p1;
-  bits+p2;
+  std::string reSwapped1 = bitswap.decryptedText(swapped1);
+  
+  cout << "DECRYPT: " << swapped1 << " => " << reSwapped1;
+  cout << endl << endl;
 }

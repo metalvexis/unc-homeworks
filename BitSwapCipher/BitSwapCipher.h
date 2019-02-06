@@ -17,9 +17,14 @@ private:
   // accepts a binary string and returns the equivalent decimal value
   int toDecimal(std::string);
   
+  // accepts binary in string format and swaps bits according to encryption keys
   void bitSwap(std::string&);
 
+  // accepts char to swap into another char
   char charSwap(char);
+  
+  // returns true if keys are between 0-4
+  bool isKeyValid();
   
 public:  
   BitSwapCipher(){ _keys.first = 0; _keys.second = 0; };
@@ -28,9 +33,7 @@ public:
   
   void setEncryptionKey(int k1, int k2){ _keys.first = k1-1; _keys.second = k2-1; };
   
-  //~BitSwapCipher();
-  
-  // encrypting a string by carrying out the encryption process
+  // encrypts a string
   // This function returns an empty string if either the plaintext is blank or 
   // if the encryption key pair is not valid (encryption key is
   // valid only if each value of the pair is between 1 and 5).

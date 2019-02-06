@@ -36,11 +36,20 @@ int BitSwapCipher::toDecimal(std::string binString){
 }
 
 std::string BitSwapCipher::encryptedText(char * plaintxt){
-
+  
+  if( *plaintxt=='\0' || !isKeyValid() ) return "";
+//if( *plaintxt=='\0' ) return "";
+  
   std::string ciphertxt = "";
-
+  
   while(*plaintxt){
-    ciphertxt.push_back( charSwap(*plaintxt) );
+    
+    if(*plaintxt==' '){
+      ciphertxt.push_back( ' ' );
+    }else{
+      ciphertxt.push_back( charSwap(*plaintxt) );
+    }
+    
     
     plaintxt++;
   }
@@ -52,12 +61,6 @@ std::string BitSwapCipher::decryptedText(std::string ciphertxt){
   const char * plaintxt = ciphertxt.c_str();
 
   return encryptedText( const_cast<char*>(plaintxt));
-}
-
-void BitSwapCipher::bitSwap(std::string& binString){
-  char tmpChar = binString.at(_keys.first);
-  binString.at(_keys.first) = binString.at(_keys.second);
-  binString.at(_keys.second) = tmpChar;
 }
 
 char BitSwapCipher::charSwap(char plainChar){
@@ -80,4 +83,17 @@ char BitSwapCipher::charSwap(char plainChar){
 //    cout << "POST-SWAP " << binString << " == " << newChar << "|" << decimalValue << endl << endl;   
 
     return newChar;
+}
+
+void BitSwapCipher::bitSwap(std::string& binString){
+  char tmpChar = binString.at(_keys.first);
+  binString.at(_keys.first) = binString.at(_keys.second);
+  binString.at(_keys.second) = tmpChar;
+}
+
+bool BitSwapCipher::isKeyValid(){
+  
+  bool isFirstValid = _keys.first <= 4 && _keys.first >= 0;
+  bool isSecondValid = _keys.second <= 4 && _keys.second >= 0;
+  return isFirstValid && isSecondValid;
 }
