@@ -16,7 +16,6 @@ public:
   
   // accepts a binary string and returns the equivalent decimal value
   int toDecimal(std::string);
-  
 
   BitSwapCipher(){ _keys.first = 1; _keys.second = 1; };
   
