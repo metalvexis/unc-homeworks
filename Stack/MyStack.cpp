@@ -17,6 +17,7 @@ void MyStack::print(){
   for(int _i = 0; _i<topElemIdx; _i++){
     cout<< ptrStack[_i];
   }
+  cout << endl;
 }
 
 char MyStack::top(){

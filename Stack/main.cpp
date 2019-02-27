@@ -19,6 +19,7 @@ int main(){
 
   cout << "Stack: ";
   stack.print();
+  cout << "Top: " << stack.top();
   cout << endl;
 
   int popItemCount = 5;
@@ -31,6 +32,8 @@ int main(){
 
   cout << "Stack: ";
   stack.print();
+  cout << "Top: " << stack.top();
   cout << endl;
+  
   return 0;
 }
