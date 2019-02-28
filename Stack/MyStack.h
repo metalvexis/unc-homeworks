@@ -6,6 +6,8 @@ class MyStack {
     char * ptrStack;
     
     int topElemIdx;
+
+    int stackSize;
   
   public:
 
@@ -15,7 +17,7 @@ class MyStack {
     
     MyStack(int size) { initStack(size); };
 
-    void initStack(int size){ ptrStack = new char[size]; topElemIdx = 0; }
+    void initStack(int size);
 
     bool isEmpty();
 
@@ -27,7 +29,9 @@ class MyStack {
 
     void push(char);
 
-    void pop();    
+    void pop();
+
+    void expandStack();
 };
 
 #endif

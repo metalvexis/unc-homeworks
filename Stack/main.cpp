@@ -8,21 +8,21 @@ using namespace std;
 
 int main(){
 
-  string testInput = "1234567890123";
+  string testInput = "1234567890";
 
   cout << "Input string: " << testInput << endl;
-  MyStack stack;
+  MyStack stack(3);
 
   for(int _i=0; _i<testInput.length(); _i++){
     stack.push(testInput[_i]);
   }
 
-  cout << "Stack: ";
+  cout << "Print Stack: ";
   stack.print();
   cout << "Top: " << stack.top();
   cout << endl;
 
-  int popItemCount = 5;
+  int popItemCount = 20;
 
   cout << "Popping " << popItemCount << " Items" << endl;
 
@@ -30,7 +30,7 @@ int main(){
     stack.pop();
   }
 
-  cout << "Stack: ";
+  cout << "Print Stack: ";
   stack.print();
   cout << "Top: " << stack.top();
   cout << endl;
