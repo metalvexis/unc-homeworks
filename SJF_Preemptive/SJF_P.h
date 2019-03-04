@@ -6,9 +6,9 @@ using namespace std;
 #define _SJF_P_H_
 
 struct _process {
-  int _processId;
-  int _processTime;
+  unsigned long int _processId;
   int _arrivalTime;
+  int _burstTime;
 };
 
 class SJF_P
@@ -16,12 +16,6 @@ class SJF_P
   private:
     
     std::vector<_process> _processes;
-    
-    std::vector<int> _totalProcessTimes;
-    
-    static bool _compareArrivalTime( _process, _process );
-
-    static bool _compareProcessTime( _process, _process );
     
   public:
     SJF_P();
