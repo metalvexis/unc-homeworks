@@ -11,6 +11,11 @@ class PostFix {
   private: 
     std::string _expression;
     MyStack stack;
+
+    bool hasInvalidElem();
+    // static bool isRPN(std::string);
+    static bool isOperand(char);
+    static bool isOperator(char);
   
   public:
 

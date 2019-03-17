@@ -2,3 +2,4 @@ local_config/
 .codelite/
 testPouchDB/node_modules/
 *test
+.vscode/

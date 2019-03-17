@@ -6,11 +6,87 @@
 using namespace std;
 
 std::string PostFix::eval(){
-  return "0";
+  stack.clear();
+  for(  std::string::iterator strIter = _expression.begin(); 
+        strIter != _expression.end(); 
+        strIter++ ) {
+
+    bool isOperand = PostFix::isOperand( *strIter );
+    bool isOperator = PostFix::isOperator( *strIter );
+
+    if( isOperand ){
+      
+      stack.push( double(*strIter-48) );
+      
+      if( strIter+1 == _expression.end() ){
+        throw "operator expected";
+      }
+    
+    } else if ( isOperator ){
+      double operand1 = 0;
+      double operand2 = 0;
+      double result = 0;
+
+      if( stack.isEmpty() ){
+        if( strIter+1 == _expression.end() ){
+          throw "two operands expected";
+        }else{
+          throw "not rpn (prefix)";
+        }
+      };
+      
+      operand1 = stack.top();
+      stack.pop();
+
+      if( stack.isEmpty() ){
+        if( strIter+1 == _expression.end() ){
+          throw "two operands expected";
+        }else{
+          throw "not rpn (infix)";
+        }
+      };
+
+      operand2 = stack.top();
+      stack.pop();
+
+      switch ( *strIter ){
+        case 42: // *
+          result = operand2 * operand1;
+          break;
+        case 43: // +
+          result = operand2 + operand1;
+          break;
+        case 45: // -
+          result = operand2 - operand1;
+          break;
+        case 47: // /
+          result = operand2 / operand1;
+          break;
+        default:
+          // unlikely to happen
+          // but if it did, replace your RAM
+          result = 0; 
+          break;
+      }
+
+      stack.push( result );
+    }else{
+      throw "unexpected element";
+    }
+  }
+
+  return std::to_string(stack.top());
+  
 }
 
 bool PostFix::isValid(){
-  cout << endl;
+  // bool isValid = true;
+  try {
+    eval();
+  }catch( const char * err ){
+    return false;
+  }
+  
   // Numerics : 48 - 57
   // Operators:
   // 42   : *
@@ -18,36 +94,41 @@ bool PostFix::isValid(){
   // 45   : -
   // 47   : /
   
+  return true;
+}
+
+bool PostFix::hasInvalidElem(){
+  // Check expression for invalid element
   bool isValid = true;
-
-  // Check string for invalid element
+  
   for(  std::string::iterator strIter = _expression.begin(); strIter != _expression.end(); strIter++){
-    int decVal = *strIter;
-    bool isNumeric = false;
-    bool isOperator = false;
-
-    isNumeric = decVal>=48 && decVal<=57;
-
-    switch (decVal){
-      case 42:
-      case 43:
-      case 45:
-      case 47:
-        isOperator = true;
-        break;
-      default:
-        isOperator = false;
-        break;
-    }
+    int element = *strIter;
+    bool isOperand = PostFix::isOperand( element );
+    bool isOperator = PostFix::isOperator( element );    
     
-    // cout << decVal << " : " << ( isNumeric || isOperator ) << endl;
-    if( !(isNumeric || isOperator) ){
-      isValid = isNumeric || isOperator;
+    if( !(isOperand || isOperator) ){
+      isValid = false;
       break;
     }
   }
 
-  return isValid;
-  // simulated eval to check if in postfix format
-  
+  return !isValid;
+}
+
+bool PostFix::isOperand(char x){
+  return x >= 48 && x <= 57;
+}
+
+bool PostFix::isOperator(char x){
+  switch (x){
+    case 42:
+    case 43:
+    case 45:
+    case 47:
+      return true;
+      break;
+    default:
+      return false;
+      break;
+  }
 }

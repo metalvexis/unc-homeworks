@@ -3,7 +3,7 @@
 
 class MyStack {
   private: 
-    char * ptrStack;
+    double * ptrStack;
     
     int topElemIdx;
 
@@ -23,15 +23,19 @@ class MyStack {
 
     bool isFull();
 
-    char top();
+    double top();
+
+    int topIdx();
 
     void print();
 
-    void push(char);
+    void push(double);
 
     void pop();
 
     void expandStack();
+
+    void clear();
 };
 
 #endif
