@@ -7,6 +7,7 @@ using namespace std;
 
 std::string PostFix::eval(){
   stack.clear();
+
   for(  std::string::iterator strIter = _expression.begin(); 
         strIter != _expression.end(); 
         strIter++ ) {
@@ -28,11 +29,7 @@ std::string PostFix::eval(){
       double result = 0;
 
       if( stack.isEmpty() ){
-        if( strIter+1 == _expression.end() ){
-          throw "two operands expected";
-        }else{
-          throw "not rpn (prefix)";
-        }
+        throw "not rpn (prefix)";
       };
       
       operand1 = stack.top();
@@ -78,7 +75,6 @@ std::string PostFix::eval(){
   }
 
   return std::to_string(stack.top());
-  
 }
 
 bool PostFix::isValid(){
@@ -93,28 +89,7 @@ bool PostFix::isValid(){
   }catch( const char * err ){
     return false;
   }
-  
-  
-  
   return true;
-}
-
-bool PostFix::hasInvalidElem(){
-  // Check expression for invalid element
-  bool isValid = true;
-  
-  for(  std::string::iterator strIter = _expression.begin(); strIter != _expression.end(); strIter++){
-    int element = *strIter;
-    bool isOperand = PostFix::isOperand( element );
-    bool isOperator = PostFix::isOperator( element );    
-    
-    if( !(isOperand || isOperator) ){
-      isValid = false;
-      break;
-    }
-  }
-
-  return !isValid;
 }
 
 bool PostFix::isOperand(char x){

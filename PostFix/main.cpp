@@ -13,7 +13,7 @@ int main(){
 
   std::string testExpr [] = {
     
-    "623*",   // dangling input: 6 
+    "",   // no input is valid
     "623+4*", // dangling input: 6
     "123*+",  // valid
     "123-/",  // valid
@@ -24,7 +24,7 @@ int main(){
     "123*4",
     // ? + ?
     "+123*4",
-    // 1 + ?
+    // ? + 1
     "1+23*4",
     // divide by zero
     "30/2*",
