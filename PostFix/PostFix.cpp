@@ -60,7 +60,9 @@ std::string PostFix::eval(){
           result = operand2 - operand1;
           break;
         case 47: // /
+          if(operand1==0) throw "Divide by zero";
           result = operand2 / operand1;
+          
           break;
         default:
           // unlikely to happen
@@ -80,19 +82,19 @@ std::string PostFix::eval(){
 }
 
 bool PostFix::isValid(){
-  // bool isValid = true;
+  // Operands : 48 - 57
+  // Operators:
+  // 42   : *
+  // 43   : +
+  // 45   : -
+  // 47   : /
   try {
     eval();
   }catch( const char * err ){
     return false;
   }
   
-  // Numerics : 48 - 57
-  // Operators:
-  // 42   : *
-  // 43   : +
-  // 45   : -
-  // 47   : /
+  
   
   return true;
 }

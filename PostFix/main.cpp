@@ -11,20 +11,29 @@ void testEval( std::string );
 
 int main(){
 
-  string testExpr1 = "123*";
-  string testExpr2 = "123+4*";
-  string testExpr3 = "123*+";
-  string testExpr4 = "123*4";
-  string testExpr5 = "+123*4";
-  string testExpr6 = "123*+4";
-  
+  std::string testExpr [] = {
+    
+    "623*",   // dangling input: 6 
+    "623+4*", // dangling input: 6
+    "123*+",  // valid
+    "123-/",  // valid
+    "123-4/", // valid
+    "123/-",  // valid
 
-  testEval( testExpr1 );
-  testEval( testExpr2 );
-  testEval( testExpr3 );
-  testEval( testExpr4 );
-  testEval( testExpr5 );
-  testEval( testExpr6 );
+    // 3 * 2 ? 4
+    "123*4",
+    // ? + ?
+    "+123*4",
+    // 1 + ?
+    "1+23*4",
+    // divide by zero
+    "30/2*",
+  };
+  
+  for(auto i = 0; i < 10; i++)
+  {
+    testEval( testExpr[i] );
+  }
  
   
   return 0;
@@ -36,12 +45,10 @@ void testEval( std::string testExpr ){
   PostFix pf(testExpr);
 
   try{
-    
     cout << "isValid: " << (pf.isValid()?"True":"False") << endl;
     cout << "eval: " << pf.eval();
-
   }catch(const char* e){
-    cout << e;
+    cerr << e;
   }
   
   
