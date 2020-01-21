@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<style>
+  html, body {
+    font-size: 20px;
+  }
+</style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Number Systems Converter</title>
+  </head>
+  <body>
+    <div>
+      <div style="text-align: left; margin: 0 auto; width: 480px; margin-top: 60px;">
+        <form>
+          Base of Number to be converted:
+          <select name="inputBase" id="inputBase">
+            <option value="DEC" selected>D</option>
+            <option value="BIN">B</option>
+            <!-- <option value="OCT">O</option>
+            <option value="HEX">H</option> -->
+          </select>
+          <br>
+          Input value:
+          <input type="text" name="inputVal" id="inputVal">
+          <br>
+          Base of Number to be converted to:
+          <select name="outputBase" id="outputBase">
+            <option value="DEC">D</option>
+            <option value="BIN" selected>B</option>
+            <option value="OCT">O</option>
+            <option value="HEX">H</option>
+          </select>
+        </form>
+
+        <div>
+          <hr>
+          <span id="toConverted" style="display: inline-block;width: 50%;text-align: right; float: right;">  </span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- NOTE: the following imports are required to enable animations/panels/modals etc ... -->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="module" src="./lib.js"></script>
+    <script type="module" src="./index.js"></script>
+
+  </body>
+</html>
